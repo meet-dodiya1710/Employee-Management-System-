@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee System</title>
+    <style>
+        /* Global styling for the entire page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f3f5; /* Light background color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header styling */
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 1.8em; /* Slightly smaller font size */
+            font-weight: 600;
+            margin-bottom: 20px; /* Reduced bottom margin */
+        }
+
+        /* Container for the form */
+        .form-container {
+            width: 100%; /* Set width to 100% for responsiveness */
+            max-width: 900px; /* Limit the maximum width */
+            margin: 40px auto;
+            padding: 20px; /* Reduced padding */
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box; /* Ensure the padding doesn't increase width */
+        }
+
+        /* Form group styling (for inputs and labels) */
+        .form-group {
+            margin-bottom: 15px; /* Reduced margin between form elements */
+        }
+
+        /* Form input and textarea styling */
+        input[type="text"], input[type="email"], input[type="number"], input[type="date"], textarea {
+            width: 100%;
+            padding: 10px 12px; /* Reduced padding */
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 0.95em; /* Slightly smaller font size */
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Submit button styling */
+        button[type="submit"] {
+            padding: 12px 16px; /* Reduced padding */
+            background-color: #007bff; /* Blue background for submit button */
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em; /* Slightly smaller font size */
+            cursor: pointer;
+            width: 100%; /* Full width of the form */
+            box-sizing: border-box;
+        }
+
+        /* Hover effect for the submit button */
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Back button styling */
+        .back-btn {
+            display: inline-block;
+            padding: 10px 16px; /* Reduced padding */
+            background-color: #dc3545; /* Red background for the back button */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 20px;
+            text-align: center;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Hover effect for back button */
+        .back-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Add button styling */
+        .add-btn a {
+            padding: 10px 16px; /* Reduced padding */
+            background-color: #28a745; /* Green color for add button */
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1em; /* Slightly smaller font size */
+            margin-top: 20px;
+        }
+
+        /* Hover effect for the add button */
+        .add-btn a:hover {
+            background-color: #218838;
+        }
+
+        /* Styling for form links (for 'back' button) */
+        a {
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        /* Small card shadow effect for buttons and form */
+        .card {
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for form error messages */
+        .form-error {
+            color: #dc3545;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <center><h1>Employee Management System</h1></center>
+    <hr>
+
+    <div class="form-container">
+        <h2>{% if form.instance.pk %}Update{% else %}Add{% endif %} Employee</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+
+        <a class="back-btn" href="{% url 'employee-list' %}">Back</a>
+    </div>
+</body>
+</html>
